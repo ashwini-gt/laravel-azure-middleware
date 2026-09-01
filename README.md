@@ -1,18 +1,18 @@
 # Laravel Azure Middleware
 
-Provides Azure Authentication Middleware for a Laravel App.  If you like this, checkout <a href="https://github.com/rootinc/laravel-saml2-middleware">Laravel Saml Middleware</a>
+Provides Azure Authentication Middleware for a Laravel App.  If you like this, checkout <a href="https://github.com/ashwini-gt/laravel-azure-middleware">Laravel Saml Middleware</a>
 
 ## Normal Installation
 
 1. `composer require ashwinibind/laravel-azure-middleware`
-2. run `php artisan vendor:publish --provider="AshwiniBind\LaravelAzureMiddleware\AzureServiceProvider"` to install config file to `config/azure.php`
+2. run `php artisan vendor:publish --provider="AshwiniGt\LaravelAzureMiddleware\AzureServiceProvider"` to install config file to `config/azure.php`
 3. In our routes folder (most likely `web.php`), add
 ```php
-Route::get('/login/azure', '\AshwiniBind\LaravelAzureMiddleware\Azure@azure');
-Route::get('/login/azurecallback', '\AshwiniBind\LaravelAzureMiddleware\Azure@azurecallback');
+Route::get('/login/azure', '\AshwiniGt\LaravelAzureMiddleware\Azure@azure');
+Route::get('/login/azurecallback', '\AshwiniGt\LaravelAzureMiddleware\Azure@azurecallback');
 ```
 
-4. In our `App\Http\Kernel.php` add `'azure' => \AshwiniBind\LaravelAzureMiddleware\Azure::class,` most likely to the `$routeMiddleware` array.
+4. In our `App\Http\Kernel.php` add `'azure' => \AshwiniGt\LaravelAzureMiddleware\Azure::class,` most likely to the `$routeMiddleware` array.
 5. In our `.env` add `AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET and AZURE_RESOURCE`.  We can get these values/read more here: https://portal.azure.com/ (Hint: AZURE_RESOURCE should be https://graph.microsoft.com)
 6. As of 0.8.0, we added `AZURE_SCOPE`, which are permissions to be used for the request.  We can read more about these here: https://docs.microsoft.com/en-us/graph/api/resources/users?view=graph-rest-1.0
 7. We also added an optional `AZURE_DOMAIN_HINT` that can be used to help users know which email address they should login with.  More info here: https://azure.microsoft.com/en-us/updates/app-service-auth-and-azure-ad-domain-hints/
@@ -24,11 +24,11 @@ __NOTE: ~~You may need to add premissions for (legacy) Azure Active Directory Gr
 
 ## Routing
 
-`Route::get('/login/azure', '\AshwiniBind\LaravelAzureMiddleware\Azure@azure');` First parameter can be wherever you want to route the azure login.  Change as you would like.
+`Route::get('/login/azure', '\AshwiniGt\LaravelAzureMiddleware\Azure@azure');` First parameter can be wherever you want to route the azure login.  Change as you would like.
 
-`Route::get('/login/azurecallback', '\AshwiniBind\LaravelAzureMiddleware\Azure@azurecallback');` First parameter can be whatever you want to route after your callback.  Change as you would like.
+`Route::get('/login/azurecallback', '\AshwiniGt\LaravelAzureMiddleware\Azure@azurecallback');` First parameter can be whatever you want to route after your callback.  Change as you would like.
 
-`Route::get('/logout/azure', '\AshwiniBind\LaravelAzureMiddleware\Azure@azurelogout');` First parameter can be whatever you want to route after your callback.  Change as you would like.
+`Route::get('/logout/azure', '\AshwiniGt\LaravelAzureMiddleware\Azure@azurelogout');` First parameter can be whatever you want to route after your callback.  Change as you would like.
 
 ### Front End
 
@@ -46,7 +46,7 @@ The out-of-the-box implementation let's you login users.  However, let's say we 
 
 namespace App\Http\Middleware;
 
-use AshwiniBind\LaravelAzureMiddleware\Azure as Azure;
+use AshwiniGt\LaravelAzureMiddleware\Azure as Azure;
 use Microsoft\Graph\Graph;
 use Microsoft\Graph\Model;
 
@@ -104,7 +104,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-use AshwiniBind\LaravelAzureMiddleware\Azure as Azure;
+use AshwiniGt\LaravelAzureMiddleware\Azure as Azure;
 
 use Auth;
 use Carbon\Carbon;
@@ -137,7 +137,7 @@ As of v0.6.0, we added the ability to customize the redirect method.  For exampl
 
 namespace App\Http\Middleware;
 
-use AshwiniBind\LaravelAzureMiddleware\Azure as Azure;
+use AshwiniGt\LaravelAzureMiddleware\Azure as Azure;
 
 use Auth;
 
@@ -166,7 +166,7 @@ As of v0.4.0, we added the ability to change the `$login_route` in the middlewar
 
 namespace App\Http\Middleware;
 
-use AshwiniBind\LaravelAzureMiddleware\Azure as Azure;
+use AshwiniGt\LaravelAzureMiddleware\Azure as Azure;
 
 class AppAzure extends Azure
 {
@@ -185,7 +185,7 @@ As of v0.7.0, we added the ability to get the Azure URL.  For example, let's say
 
 namespace App\Http\Middleware;
 
-use AshwiniBind\LaravelAzureMiddleware\Azure as Azure;
+use AshwiniGt\LaravelAzureMiddleware\Azure as Azure;
 
 use Auth;
 
@@ -232,7 +232,7 @@ As of v0.7.0, we added integration with Laravel's tests by calling `actingAs` fo
 
 namespace App\Http\Middleware;
 
-use AshwiniBind\LaravelAzureMiddleware\Azure as Azure;
+use AshwiniGt\LaravelAzureMiddleware\Azure as Azure;
 
 use Auth;
 
