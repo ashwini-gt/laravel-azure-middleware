@@ -65,8 +65,8 @@ class Azure
             $this->fail($request, new \Exception('Missing tokens in response contents'));
         }
         
-        $request->session()->put('_rootinc_azure_access_token', $contents->access_token);
-        $request->session()->put('_rootinc_azure_refresh_token', $contents->refresh_token);
+        $request->session()->put('_ashwinigt_azure_access_token', $contents->access_token);
+        $request->session()->put('_ashwinigt_azure_refresh_token', $contents->refresh_token);
 
         return $this->handlecallback($request, $next, $access_token, $refresh_token);
     }
@@ -157,8 +157,8 @@ class Azure
         $refresh_token = $contents->refresh_token;
         $profile = json_decode( base64_decode( explode(".", $contents->id_token)[1]) );
 
-        $request->session()->put('_rootinc_azure_access_token', $access_token);
-        $request->session()->put('_rootinc_azure_refresh_token', $refresh_token);
+        $request->session()->put('_ashwinigt_azure_access_token', $access_token);
+        $request->session()->put('_ashwinigt_azure_refresh_token', $refresh_token);
 
         return $this->success($request, $access_token, $refresh_token, $profile);
     }
@@ -242,8 +242,8 @@ class Azure
      */
     public function azurelogout(Request $request)
     {
-        $request->session()->pull('_rootinc_azure_access_token');
-        $request->session()->pull('_rootinc_azure_refresh_token');
+        $request->session()->pull('_ashwinigt_azure_access_token');
+        $request->session()->pull('_ashwinigt_azure_refresh_token');
 
         return redirect()->away($this->getLogoutUrl());
     }
