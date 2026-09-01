@@ -1,6 +1,6 @@
 <?php
 
-namespace AshwiniBind\LaravelAzureMiddleware;
+namespace AshwiniGt\LaravelAzureMiddleware;
 
 use Closure;
 
@@ -30,8 +30,8 @@ class Azure
      */
     public function handle($request, Closure $next)
     {
-        $access_token = $request->session()->get('_rootinc_azure_access_token');
-        $refresh_token = $request->session()->get('_rootinc_azure_refresh_token');
+        $access_token = $request->session()->get('_ashwinigt_azure_access_token');
+        $refresh_token = $request->session()->get('_ashwinigt_azure_refresh_token');
 
         if (config('app.env') === "testing")
         {
@@ -103,7 +103,7 @@ class Azure
 
     /**
      * Redirects to the Azure route.  Typically used to point a web route to this method.
-     * For example: Route::get('/login/azure', '\AshwiniBind\LaravelAzureMiddleware\Azure@azure');
+     * For example: Route::get('/login/azure', '\AshwiniGt\LaravelAzureMiddleware\Azure@azure');
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed
@@ -235,7 +235,7 @@ class Azure
 
     /**
      * Redirects to the Azure logout route.  Typically used to point a web route to this method.
-     * For example: Route::get('/logout/azure', '\AshwiniBind\LaravelAzureMiddleware\Azure@azurelogout');
+     * For example: Route::get('/logout/azure', '\AshwiniGt\LaravelAzureMiddleware\Azure@azurelogout');
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|mixed

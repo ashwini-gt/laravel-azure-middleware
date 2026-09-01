@@ -1,6 +1,6 @@
 <?php
 
-namespace AshwiniBind\LaravelAzureMiddleware;
+namespace AshwiniGt\LaravelAzureMiddleware;
 
 use Illuminate\Support\ServiceProvider;
 
