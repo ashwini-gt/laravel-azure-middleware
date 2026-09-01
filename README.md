@@ -4,7 +4,7 @@ Provides Azure Authentication Middleware for a Laravel App.  If you like this, c
 
 ## Normal Installation
 
-1. `composer require ashwinibind/laravel-azure-middleware`
+1. `composer require ashwinigt/laravel-azure-middleware`
 2. run `php artisan vendor:publish --provider="AshwiniGt\LaravelAzureMiddleware\AzureServiceProvider"` to install config file to `config/azure.php`
 3. In our routes folder (most likely `web.php`), add
 ```php
